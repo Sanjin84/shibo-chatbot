@@ -1,0 +1,42 @@
+{
+  "bad_byes": [
+    "a",
+    "b"
+  ],
+  "familiar_greetings": [
+    "Welcome back NAME, how have you been? ",
+    "Good to see you again NAME, how are things going? "
+  ],
+  "good_byes": [
+    "a",
+    "b"
+  ],
+  "good_hellos": [
+    "Hello human what is your name? ",
+    "I am in a mood to chat :), so human what is your name? "
+  ],
+  "bad_hellos": [
+    "This is gonna be a looong day . . so human what is your name? ",
+    "Oh well here we go, another human, so what is your name? "
+  ],
+  "unfamiliar_greetings": [
+    "Good to meet you NAME, how are you? ",
+    "Well hello there NAME, how are you going? "
+  ],
+  "topic_questions": [
+    "What is your take on ",
+    "What do you think about ",
+    "How do you feel about ",
+    "What do you reckon about ",
+    "I would like your opinion on "
+  ],
+  "topics": {
+    "football": 0.1,
+    "Melbourne": 0.2,
+    "AFL": -0.5,
+    "Endgame": -0.1,
+    "Python": 0.5,
+    "Computers": 0.7,
+    "Computer games": 0.5
+  }
+}

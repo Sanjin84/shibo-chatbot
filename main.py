@@ -1,0 +1,17 @@
+import json
+
+with open('stock_responses.json', 'r') as fp:
+    stock_responses = json.load(fp)
+with open('people.json', 'r') as fp:
+    person_info = json.load(fp)
+
+from introduction import *
+from topics import *
+from advising import *
+
+
+mood = random.randint(3, 10)
+name = intro(stock_responses, person_info, mood)
+topic_conversation(name, stock_responses, person_info, mood)
+mood = advice_generator(name, mood, stock_responses, person_info)
+conclusion(mood, name)
