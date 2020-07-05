@@ -1,7 +1,10 @@
-import random
 import json
+import random
 import time
 from textblob import TextBlob
+from parser import *
+ans = smart_input('Who are you')
+print(ans)
 
 with open('stock_responses.json', 'r') as fp:
     stock_responses = json.load(fp)
@@ -12,9 +15,9 @@ with open('people.json', 'r') as fp:
 def intro(s_r, p_info, mood):
     # first greeting depending on the mood
     if mood > 5:
-        name = input(random.choice(s_r["good_hellos"]))
+        name = smart_input(random.choice(s_r["good_hellos"]))
     else:
-        name = input(random.choice(s_r["bad_hellos"]))
+        name = smart_input(random.choice(s_r["bad_hellos"]))
     time.sleep(2)
     # second greeting depending on familiarity
     if name in p_info:

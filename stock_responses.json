@@ -3,13 +3,13 @@
     "a",
     "b"
   ],
-  "familiar_greetings": [
-    "Welcome back NAME, how have you been? ",
-    "Good to see you again NAME, how are things going? "
-  ],
   "good_byes": [
     "a",
     "b"
+  ],
+    "familiar_greetings": [
+    "Welcome back NAME, how have you been? ",
+    "Good to see you again NAME, how are things going? "
   ],
   "good_hellos": [
     "Hello human what is your name? ",
