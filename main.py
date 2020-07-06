@@ -5,12 +5,10 @@ with open('stock_responses.json', 'r') as fp:
 with open('people.json', 'r') as fp:
     person_info = json.load(fp)
 
-from parser import *
 from introduction import *
 from topics import *
 from advising import *
 from conclusion import *
-
 
 mood = random.randint(3, 10)
 name = intro(stock_responses, person_info, mood)
