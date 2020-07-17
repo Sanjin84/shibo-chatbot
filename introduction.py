@@ -1,6 +1,4 @@
 import json
-import random
-import time
 from textblob import TextBlob
 from adv_input import *
 
@@ -12,23 +10,28 @@ with open('people.json', 'r') as fp:
     person_info = json.load(fp)
 
 
-def intro(s_r, p_info, mood):
-    # first greeting depending on the mood
+def introduce_human(s_r, p_info, mood):
+    name, familiar = identify_user(s_r, p_info, mood)
+    if familiar:
+        ask_how_are_you(name, s_r, mood, familiar=True)
+    if not familiar:
+        get_user_info(stock_responses, person_info, name)
+        ask_how_are_you(name, s_r, mood, familiar=False)
+    return name
+
+
+def identify_user(s_r, p_info, mood):
     if mood > 5:
         name = smart_input(random.choice(s_r["good_hellos"]))
     else:
         name = smart_input(random.choice(s_r["bad_hellos"]))
-    # second greeting depending on familiarity
+    familiar = False
     if name in p_info:
-        greeting(name, s_r, mood, 'familiar')
-    else:
-        # find out information about the user
-        inquiry(stock_responses, person_info, name)
-        greeting(name, s_r, mood, 'unfamiliar')
-    return name
+        familiar = True
+    return name, familiar
 
 
-def inquiry(s_r, p_info, name):
+def get_user_info(s_r, p_info, name):
     p_info[name] = {"age": 0, "city": 0, "nickname": 0}
     ans = smart_input('Do you have nickname? ')
     if 'yes' in ans.lower() or 'y' in ans.lower():
@@ -44,13 +47,12 @@ def inquiry(s_r, p_info, name):
         json.dump(p_info, open("people.json", 'w'))
 
 
-def greeting(name, s_r, mood, familiarity):
-    if familiarity == 'familiar':
+def ask_how_are_you(name, s_r, mood, familiar):
+    if familiar:
         response = random.choice(s_r["familiar_greetings"])
-    if familiarity == 'unfamiliar':
+    if not familiar:
         response = random.choice(s_r["unfamiliar_greetings"])
     ans = smart_input(response.replace('NAME', name))
-    time.sleep(2)
     blob = TextBlob(ans)
     if blob.polarity > 0.1 and mood >= 5:
         print('Glad you are doing well')
@@ -60,4 +62,3 @@ def greeting(name, s_r, mood, familiarity):
         print('I feel your pain human')
     else:
         print('Seems like you are OK')
-

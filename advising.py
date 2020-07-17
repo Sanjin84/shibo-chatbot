@@ -3,7 +3,7 @@ from textblob import TextBlob
 from adv_input import *
 
 
-def advice_generator(name,mood, s_r, p_info):
+def generate_advice(name,mood, s_r, p_info):
     if mood < 4:
         print("I was going to give you some life changing advice . . . but clearly you don't deserve it")
     else:

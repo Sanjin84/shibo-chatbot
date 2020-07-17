@@ -11,7 +11,7 @@ from advising import *
 from conclusion import *
 
 mood = random.randint(3, 10)
-name = intro(stock_responses, person_info, mood)
-topic_conversation(name, stock_responses, person_info, mood)
-mood = advice_generator(name, mood, stock_responses, person_info)
+name = introduce_human(stock_responses, person_info, mood)
+mood = talk_about_topics(name, stock_responses, person_info, mood)
+mood = generate_advice(name, mood, stock_responses, person_info)
 conclude(name)
